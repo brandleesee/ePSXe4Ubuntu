@@ -2,25 +2,17 @@
 
 <p align="center"><a href="https://chrismartinphotography.files.wordpress.com/2013/01/2012-landscapes-c2a9-christopher-martin-93441.jpg">Background</a> | <a href="http://xenlism.github.io/minimalism/">Minimalism GTK3 Theme</a> | <a href="https://github.com/xenlism/Storm">Storm Icon Set</a> | <a href="https://b00merang.weebly.com/windows-10.html">Windows 10 GTK Pack</a></p>
 
+<h2 align="center">changelog</h2>
+  
 <table>
 <tbody>
   <tr>
-   <td><img src="https://camo.githubusercontent.com/66f9d39d7a5274a0c8e7e0e5ff353eba364160c2/687474703a2f2f692e696d6775722e636f6d2f5534514e6b584c2e706e67" /></td>
+   <td><img src="https://i.imgur.com/2DlxMw4.png" /></td>
   </tr>
 </tbody>
 </table>
-
-<h2 align="center">changelog</h2>
 
 <h3 align="center">11</h3>
-
-<table>
-<tbody>
-  <tr>
-   <td><img src="https://user-images.githubusercontent.com/12674437/52143698-6bdcf400-265c-11e9-99dd-79090db2bb39.png" /></td>
-  </tr>
-</tbody>
-</table>
 
 - 11.4
   - Simplify libcurl4 conflict detection by adding generic code that looks for the package instead of adding specific lines per affected distribution - https://pkgs.org/download/libcurl4
@@ -28,9 +20,25 @@
 - 11.3
   - Added support for Debian Sid testing branch, Debian 9 and Debian 10 and KDE neon. This because libcurl 4 was replacing libcurl 3 on updating - https://github.com/brandleesee/ePSXe64Ubuntu/issues/7.
   - https://github.com/brandleesee/ePSXe64Ubuntu/commit/5f3b1bda3873336591b151178a90400ae2b11212
+  
+<table>
+<tbody>
+  <tr>
+   <td><img src="https://i.imgur.com/FiBbK8w.png" /></td>
+  </tr>
+</tbody>
+</table>
 
 - 11.2
   - Consolidated code blocks as per this comment: https://github.com/brandleesee/ePSXe64Ubuntu/commit/68a031d9800b308ebdc9f55046dc7f2286267e7c#commitcomment-32485422
+  
+<table>
+<tbody>
+  <tr>
+   <td><img src="https://i.imgur.com/jJyFe8b.gif" /></td>
+  </tr>
+</tbody>
+</table>
 
 - 11.1
   - Linux Mint: apt-get Legacy Utility Command
@@ -45,6 +53,14 @@
   - https://stackoverflow.com/a/4277753
   - https://stackoverflow.com/questions/2237080/how-to-compare-strings-in-bash
   
+<table>
+<tbody>
+  <tr>
+   <td><img src="https://user-images.githubusercontent.com/12674437/52143698-6bdcf400-265c-11e9-99dd-79090db2bb39.png" /></td>
+  </tr>
+</tbody>
+</table>
+
 - 11
   - easier install (one-liner in terminal kicks up the script)
   - removed quiet mode so as to have visible any errors while installing dependencies
@@ -190,6 +206,9 @@
 
 <table>
 <tbody>
+  <tr >
+   <td colspan="2"><img src="https://camo.githubusercontent.com/66f9d39d7a5274a0c8e7e0e5ff353eba364160c2/687474703a2f2f692e696d6775722e636f6d2f5534514e6b584c2e706e67" /></td>
+  </tr>
   <tr>
    <td align="center"><img src="http://i.imgur.com/Ja5u4Dg.png" /></td>
    <td align="center"><img src="http://i.imgur.com/p8vMQDt.png" /></td>
