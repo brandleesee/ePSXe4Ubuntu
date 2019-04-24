@@ -7,18 +7,11 @@
 # Brandon Lee Camilleri ( blc / brandleesee / Yrvyne ) can be reached on brandon.camilleri.90@gmail.com
 # ePSXe64Ubuntu repository can be found at https://github.com/brandleesee/ePSXe64Ubuntu
 
-ver="12"
-ins="ePSXe205linux_x64.zip"
-hme="/home/$USER"
-hid="/home/$USER/.epsxe"
 bkp="/home/$USER/ePSXe_backups/$(date "+%F-%T-%Z")"
-cor="/usr/share/applications"
-exe="/home/$USER/ePSXe"
-dls="https://raw.githubusercontent.com/brandleesee/ePSXe64Ubuntu/master"
-opt=("Download" "Restore from backup")
+ops=("Download" "Restore from backup")
 PS3="Choose from 1 to 3 above. "
 
-tput setaf 2; echo "Welcome to ePSXe64Ubuntu.sh script, $ver."; tput sgr0
+tput setaf 2; echo "Welcome to ePSXe64Ubuntu.sh script, version 12."; tput sgr0
 tput setaf 1; echo "When ePSXe GUI appears on screen:"; tput sgr0
 tput setaf 1; echo "  Right click on icon in Dash/Dock/Panel"; tput sgr0
 tput setaf 1; echo "  Add to Favorites/Lock"; tput sgr0
@@ -40,22 +33,22 @@ else
 fi
 
 # Back-up function
-	if [ -d "$hid" ]; then
+	if [ -d "/home/$USER/.epsxe" ]; then
 	  mkdir -p "$bkp"
-	  mv "$hid" "$bkp"
+	  mv "/home/$USER/.epsxe" "$bkp"
 	fi
 
 # Removes duplicate of ePSXe executable
-	if [ -e "$exe" ]; then
-	  sudo rm -rf "$exe"
+	if [ -e "/home/$USER/ePSXe" ]; then
+	  sudo rm -rf "/home/$USER/ePSXe"
 	fi
 
 # Downloads Icon
-	wget "$dls/.ePSXe.svg" -P "$hme"
+	wget "https://raw.githubusercontent.com/brandleesee/ePSXe64Ubuntu/master/ePSXe.svg" -P "/home/$USER"
 
 # Checks and creates icon data for Dash/Dock/Panel
-	if [ -e "$cor/ePSXe.desktop" ]; then
-	  sudo rm -rf "$cor/ePSXe.desktop"
+	if [ -e "/usr/share/applications/ePSXe.desktop" ]; then
+	  sudo rm -rf "/usr/share/applications/ePSXe.desktop"
 	fi
 	echo "[Desktop Entry]" > "/tmp/ePSXe.desktop"
 	{
@@ -64,14 +57,14 @@ fi
 	  echo "Exec=/home/$USER/ePSXe"
 	  echo "Name=ePSXe"
 	  echo "Comment=Created using ePSXe64Ubuntu from https://github.com/brandleesee"
-	  echo "Icon=$hme/.ePSXe.svg"
+	  echo "Icon=/home/$USER/ePSXe.svg"
 	  echo "Categories=Game;Emulator;"
 	} >> "/tmp/ePSXe.desktop"
-	sudo mv "/tmp/ePSXe.desktop" "$cor/ePSXe.desktop"
+	sudo mv "/tmp/ePSXe.desktop" "/usr/share/applications/ePSXe.desktop"
 	
 # Sets up ePSXe
-	wget "http://www.epsxe.com/files/$ins" -P "/tmp"
-	unzip "/tmp/$ins" -d "/tmp"
+	wget "http://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp"
+	unzip "/tmp/ePSXe205linux_x64.zip" -d "/tmp"
 	if apt-cache show libcurl4 2>/dev/null|grep '^Package: libcurl4$'
 	then
 	  xxd /tmp/epsxe_x64 /tmp/epsxe_x64.xxd
@@ -93,49 +86,49 @@ fi
 	"/home/$USER/ePSXe"
 
 # Transfers docs folder to .epsxe
-	mv "/tmp/docs" "$hid"
+	mv "/tmp/docs" "/home/$USER/.epsxe"
 
 # Activates BIOS HLE 
-	sed -i '11s/.*/BiosPath = /' "$hid/epsxerc"
-	sed -i '14s/.*/BiosHLE = 1/' "$hid/epsxerc"
+	sed -i '11s/.*/BiosPath = /' "/home/$USER/.epsxe/epsxerc"
+	sed -i '14s/.*/BiosHLE = 1/' "/home/$USER/.epsxe/epsxerc"
 
 # Restores Back-Up 
 	if [ -d "$bkp/.epsxe" ]; then
-	  cp -r "$bkp/.epsxe/bios/." "$hid/bios"
-	  cp -r "$bkp/.epsxe/cheats/." "$hid/cheats"
-	  cp -r "$bkp/.epsxe/config/." "$hid/config"
-	  cp -r "$bkp/.epsxe/configs/." "$hid/configs"
-	  cp -r "$bkp/.epsxe/covers/." "$hid/covers"
-	  cp -r "$bkp/.epsxe/docs/." "$hid/docs"
-	  cp -r "$bkp/.epsxe/idx/." "$hid/idx"
-	  cp -r "$bkp/.epsxe/info/." "$hid/info"
-	  cp -r "$bkp/.epsxe/memcards/." "$hid/memcards"
-	  cp -r "$bkp/.epsxe/patches/." "$hid/patches"
-	  cp -r "$bkp/.epsxe/plugins/." "$hid/plugins"
-	  cp -r "$bkp/.epsxe/sstates/." "$hid/sstates"  
+	  cp -r "$bkp/.epsxe/bios/." "/home/$USER/.epsxe/bios"
+	  cp -r "$bkp/.epsxe/cheats/." "/home/$USER/.epsxe/cheats"
+	  cp -r "$bkp/.epsxe/config/." "/home/$USER/.epsxe/config"
+	  cp -r "$bkp/.epsxe/configs/." "/home/$USER/.epsxe/configs"
+	  cp -r "$bkp/.epsxe/covers/." "/home/$USER/.epsxe/covers"
+	  cp -r "$bkp/.epsxe/docs/." "/home/$USER/.epsxe/docs"
+	  cp -r "$bkp/.epsxe/idx/." "/home/$USER/.epsxe/idx"
+	  cp -r "$bkp/.epsxe/info/." "/home/$USER/.epsxe/info"
+	  cp -r "$bkp/.epsxe/memcards/." "/home/$USER/.epsxe/memcards"
+	  cp -r "$bkp/.epsxe/patches/." "/home/$USER/.epsxe/patches"
+	  cp -r "$bkp/.epsxe/plugins/." "/home/$USER/.epsxe/plugins"
+	  cp -r "$bkp/.epsxe/sstates/." "/home/$USER/.epsxe/sstates"  
 	fi
 
 # Function for Shaders
 tput setaf 2; echo "Shaders Menu"; tput sgr0
-	select opt in "${opt[@]}" "Do nothing"; do 
+	select ops in "${ops[@]}" "Do nothing"; do 
 	  case "$REPLY" in
 	    1 ) 
-	      wget "$dls/shaders.zip" -P "/tmp"
-	      unzip "/tmp/shaders.zip" -d "$hid/shaders"
+	      wget "https://raw.githubusercontent.com/brandleesee/ePSXe64Ubuntu/master/shaders.zip" -P "/tmp"
+	      unzip "/tmp/shaders.zip" -d "/home/$USER/.epsxe/shaders"
 	      echo "This choice has downloaded shaders from ePSXe64Ubuntu repository.";
 	      break
 	    ;;
 	    2 ) 
-	      cp -r "$bkp/.epsxe/shaders/." "$hid/shaders"
+	      cp -r "$bkp/.epsxe/shaders/." "/home/$USER/.epsxe/shaders"
 	      break
 	    ;;
-	    $(( ${#opt[@]}+1 )) ) echo "This choice has left the shaders folder empty."; break;;
+	    $(( ${#ops[@]}+1 )) ) echo "This choice has left the shaders folder empty."; break;;
 	    *) echo "Invalid option. Choose from 1 to 3.";continue;;
 	  esac
 	done
 
 # Removes clutter
-	rm -rf "/tmp/$ins"
+	rm -rf "/tmp/ePSXe205linux_x64.zip"
 	rm -rf "/tmp/shaders.zip"
 	
 tput setaf 2; echo "Script finished."; tput sgr0
