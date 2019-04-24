@@ -1,5 +1,7 @@
 <h1 align="center">ePSXe64Ubuntu</h1>
 
+<p align="center"><a href="https://chrismartinphotography.files.wordpress.com/2013/01/2012-landscapes-c2a9-christopher-martin-93441.jpg">Background</a> | <a href="http://xenlism.github.io/minimalism/">Minimalism GTK3 Theme</a> | <a href="https://github.com/xenlism/Storm">Storm Icon Set</a> | <a href="https://b00merang.weebly.com/windows-10.html">Windows 10 GTK Pack</a></p>
+
 <table>
 <tbody>
   <tr>
