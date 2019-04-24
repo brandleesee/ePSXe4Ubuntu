@@ -61,6 +61,8 @@
   - patch: https://github.com/brandleesee/ePSXe64Ubuntu/pull/5
   - issue: http://ngemu.com/threads/ubuntu-bionic-libcurl-so-4-curl_openssl_3-not-found.204577/
   - previous workaround: https://launchpad.net/~xapienz/+archive/ubuntu/curl34
+
+<h3 align="center">10</h3>
   
 <table>
 <tbody>
@@ -69,8 +71,6 @@
   </tr>
 </tbody>
 </table>
-
-<h3 align="center">10</h3>
 
 - 10.3
   - Fixed script running from git cloned repo.
