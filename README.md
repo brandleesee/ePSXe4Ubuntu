@@ -76,7 +76,7 @@ FILE "_____ ___ _______.bin" BINARY
 ```bash
 sudo rm /usr/share/applications/ePSXe.desktop
 ```
-If you are running Ubuntu 18.04 or later:
+<h3 align="center">If you are running Ubuntu 18.04 or later:</h3>
 ```bash
 sudo rm /usr/lib/x86_64-linux-gnu/libcurl.so.3
 ```
