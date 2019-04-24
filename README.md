@@ -12,13 +12,12 @@
 
 - [x] uses built-in BIOS HLE
 - [x] uses built-in Core GPU & SPU plugins
-- [x] installs specific ePSXe dependency: `libsdl-ttf2.0-0`
+- [x] installs specific dependency: `libsdl-ttf2.0-0`
 - [x] installs decompression tool: `ecm`
-- [x] installs Dash / Dock / Panel application icon
+- [x] locks Dash / Dock / Panel application icon to launcher
 - [x] creates `.desktop` by default for launcher integration
-- [x] lock-to-launcher instructions
-- [x] interactive Shaders back-up function
-- [x] `libcurl 3` & `libcurl 4` now co-exist enabling software like Kodi etc to work simultaneously with ePSXe
+- [x] back-up function
+- [x] `libcurl 3` dependency co-exists with `libcurl 4` 
 
 <h2 align="center">typical installation</h2>
 
