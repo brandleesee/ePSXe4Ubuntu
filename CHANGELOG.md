@@ -31,14 +31,6 @@
 
 - 11.2
   - Consolidated code blocks as per this comment: https://github.com/brandleesee/ePSXe64Ubuntu/commit/68a031d9800b308ebdc9f55046dc7f2286267e7c#commitcomment-32485422
-  
-<table>
-<tbody>
-  <tr>
-   <td><img src="https://i.imgur.com/jJyFe8b.gif" /></td>
-  </tr>
-</tbody>
-</table>
 
 - 11.1
   - Linux Mint: apt-get Legacy Utility Command
@@ -69,6 +61,14 @@
   - patch: https://github.com/brandleesee/ePSXe64Ubuntu/pull/5
   - issue: http://ngemu.com/threads/ubuntu-bionic-libcurl-so-4-curl_openssl_3-not-found.204577/
   - previous workaround: https://launchpad.net/~xapienz/+archive/ubuntu/curl34
+  
+<table>
+<tbody>
+  <tr>
+   <td><img src="https://i.imgur.com/jJyFe8b.gif" /></td>
+  </tr>
+</tbody>
+</table>
 
 <h3 align="center">10</h3>
 
