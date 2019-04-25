@@ -55,7 +55,7 @@ wget -O ePSXe64Ubuntu.sh https://raw.githubusercontent.com/brandleesee/ePSXe64Ub
 sudo rm /usr/share/applications/ePSXe.desktop
 ```
 
-<h3 align="center">If you are running Ubuntu 18.04 or later:</h3>
+<h3 align="center">if running Ubuntu 18.04 or later</h3>
 
 ```bash
 sudo rm /usr/lib/x86_64-linux-gnu/libcurl.so.3
