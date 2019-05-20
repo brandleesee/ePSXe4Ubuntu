@@ -33,14 +33,14 @@ else
 fi
 
 # Back-up function
-	if [ -d "/home/$USER/.epsxe" ]; then
+	if [ -d "/opt/ePSXe/.epsxe" ]; then
 	  mkdir -p "$bkp"
-	  mv "/home/$USER/.epsxe" "$bkp"
+	  mv "/opt/ePSXe/.epsxe" "$bkp"
 	fi
 
 # Removes duplicate of ePSXe executable
-	if [ -e "/home/$USER/ePSXe" ]; then
-	  sudo rm -rf "/home/$USER/ePSXe"
+	if [ -e "/opt/ePSXe/ePSXe" ]; then
+	  sudo rm -rf "/opt/ePSXe/ePSXe"
 	fi
 
 # Downloads Icon
@@ -58,13 +58,14 @@ fi
 	  echo "Exec=/home/$USER/ePSXe"
 	  echo "Name=ePSXe"
 	  echo "Comment=Created using ePSXe64Ubuntu from https://github.com/brandleesee"
-	  echo "Icon=/home/$USER/ePSXe.svg"
+	  echo "Icon=/usr/share/icons/hicolor/scalable/ePSXe.svg"
 	  echo "Categories=Game;Emulator;"
 	} >> "/tmp/ePSXe.desktop"
 	sudo mv "/tmp/ePSXe.desktop" "/usr/share/applications/ePSXe.desktop"
 	sudo update-desktop-database
 	
 # Sets up ePSXe
+	sudo mkdir -p "/opt/ePSXe/"
 	wget "http://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp"
 	unzip "/tmp/ePSXe205linux_x64.zip" -d "/tmp"
 	if apt-cache show libcurl4 2>/dev/null|grep '^Package: libcurl4$'
@@ -73,23 +74,22 @@ fi
 	  patch /tmp/epsxe_x64.xxd <(echo "6434c
 00019210: 2e73 6f2e 3300 6375 726c 5f65 6173 795f  .so.3.curl_easy_
 .")
-	  xxd -r /tmp/epsxe_x64.xxd "/home/$USER/ePSXe"
+	  xxd -r /tmp/epsxe_x64.xxd "/opt/ePSXe/ePSXe"
 	  rm -f /tmp/epsxe_x64.xxd
-	  if ! sha256sum -c <(echo "45fb1ee4cb21a5591de64e1a666e4c3cacb30fcc308f0324dc5b2b57767e18ee  /home/$USER/ePSXe")
+	  if ! sha256sum -c <(echo "45fb1ee4cb21a5591de64e1a666e4c3cacb30fcc308f0324dc5b2b57767e18ee  "/opt/ePSXe/ePSXe")
 	  then
 	    tput setaf 1; echo "WARNING: patched /home/$USER/ePSXe did not match checksum, using original executable instead"; tput sgr0
-	    sudo cp -f "/tmp/epsxe_x64" "/opt/epsxe_x64"
+	    sudo cp -f "/tmp/epsxe_x64" "/opt/ePSXe/epsxe_x64"
 	  fi
 	  rm -f "/tmp/epsxe_x64"
 	else
-	  sudo mv "/tmp/epsxe_x64" "/opt/epsxe_x64"
+	  sudo mv "/tmp/epsxe_x64" "/opt/ePSXe/epsxe_x64"
 	fi
-	sudo chmod +x "/opt/epsxe_x64"
+	sudo chmod +x "/opt/ePSXe/epsxe_x64"
 	
 # Creates symlink
 	cd "/usr/local/bin"
-	sudo mkdir -p "/opt/ePSXe/
-	sudo ln -s "/opt/epsxe_x64"
+	sudo ln -s "/opt/ePSXe/epsxe_x64"
 	sudo mv epsxe_x64 "/opt/ePSXe/ePSXe"
 	cd ~
 
@@ -100,26 +100,26 @@ fi
 # $hid now becomes: "/opt/ePSXe/.epsxe"
 
 # Transfers docs folder to .epsxe
-	mv "/tmp/docs" "/home/$USER/.epsxe"
+	mv "/tmp/docs" "/opt/ePSXe/.epsxe"
 
 # Activates BIOS HLE 
-	sed -i '11s/.*/BiosPath = /' "/home/$USER/.epsxe/epsxerc"
-	sed -i '14s/.*/BiosHLE = 1/' "/home/$USER/.epsxe/epsxerc"
+	sed -i '11s/.*/BiosPath = /' "/opt/ePSXe/.epsxe/epsxerc"
+	sed -i '14s/.*/BiosHLE = 1/' "/opt/ePSXe/.epsxe/epsxerc"
 
 # Restores Back-Up 
 	if [ -d "$bkp/.epsxe" ]; then
-	  cp -r "$bkp/.epsxe/bios/." "/home/$USER/.epsxe/bios"
-	  cp -r "$bkp/.epsxe/cheats/." "/home/$USER/.epsxe/cheats"
-	  cp -r "$bkp/.epsxe/config/." "/home/$USER/.epsxe/config"
-	  cp -r "$bkp/.epsxe/configs/." "/home/$USER/.epsxe/configs"
-	  cp -r "$bkp/.epsxe/covers/." "/home/$USER/.epsxe/covers"
-	  cp -r "$bkp/.epsxe/docs/." "/home/$USER/.epsxe/docs"
-	  cp -r "$bkp/.epsxe/idx/." "/home/$USER/.epsxe/idx"
-	  cp -r "$bkp/.epsxe/info/." "/home/$USER/.epsxe/info"
-	  cp -r "$bkp/.epsxe/memcards/." "/home/$USER/.epsxe/memcards"
-	  cp -r "$bkp/.epsxe/patches/." "/home/$USER/.epsxe/patches"
-	  cp -r "$bkp/.epsxe/plugins/." "/home/$USER/.epsxe/plugins"
-	  cp -r "$bkp/.epsxe/sstates/." "/home/$USER/.epsxe/sstates"  
+	  cp -r "$bkp/.epsxe/bios/." "/opt/ePSXe/.epsxe/bios"
+	  cp -r "$bkp/.epsxe/cheats/." "/opt/ePSXe/.epsxe/cheats"
+	  cp -r "$bkp/.epsxe/config/." "/opt/ePSXe/.epsxe/config"
+	  cp -r "$bkp/.epsxe/configs/." "/opt/ePSXe/.epsxe/configs"
+	  cp -r "$bkp/.epsxe/covers/." "/opt/ePSXe/.epsxe/covers"
+	  cp -r "$bkp/.epsxe/docs/." "/opt/ePSXe/.epsxe/docs"
+	  cp -r "$bkp/.epsxe/idx/." "/opt/ePSXe/.epsxe/idx"
+	  cp -r "$bkp/.epsxe/info/." "/opt/ePSXe/.epsxe/info"
+	  cp -r "$bkp/.epsxe/memcards/." "/opt/ePSXe/.epsxe/memcards"
+	  cp -r "$bkp/.epsxe/patches/." "/opt/ePSXe/.epsxe/patches"
+	  cp -r "$bkp/.epsxe/plugins/." "/opt/ePSXe/.epsxe/plugins"
+	  cp -r "$bkp/.epsxe/sstates/." "/opt/ePSXe/.epsxe/sstates"  
 	fi
 
 # Function for Shaders
@@ -128,12 +128,12 @@ tput setaf 2; echo "Shaders Menu"; tput sgr0
 	  case "$REPLY" in
 	    1 ) 
 	      wget "https://raw.githubusercontent.com/brandleesee/ePSXe64Ubuntu/master/shaders.zip" -P "/tmp"
-	      unzip "/tmp/shaders.zip" -d "/home/$USER/.epsxe/shaders"
+	      unzip "/tmp/shaders.zip" -d "/opt/ePSXe/.epsxe/shaders"
 	      echo "This choice has downloaded shaders from ePSXe64Ubuntu repository.";
 	      break
 	    ;;
 	    2 ) 
-	      cp -r "$bkp/.epsxe/shaders/." "/home/$USER/.epsxe/shaders"
+	      cp -r "$bkp/.epsxe/shaders/." "/opt/ePSXe/.epsxe/shaders"
 	      break
 	    ;;
 	    $(( ${#ops[@]}+1 )) ) echo "This choice has left the shaders folder empty."; break;;
