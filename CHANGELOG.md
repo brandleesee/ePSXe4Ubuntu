@@ -3,6 +3,18 @@
 <p align="center"><a href="https://chrismartinphotography.files.wordpress.com/2013/01/2012-landscapes-c2a9-christopher-martin-93441.jpg">Background</a> | <a href="http://xenlism.github.io/minimalism/">Minimalism GTK3 Theme</a> | <a href="https://github.com/xenlism/Storm">Storm Icon Set</a> | <a href="https://b00merang.weebly.com/windows-10.html">Windows 10 GTK Pack</a></p>
 
 <h2 align="center">changelog</h2>
+
+<h3 align="center">10</h3>
+
+- 12
+  - Removed shortcuts for immediate recognition of paths.
+  - Removed quite flags to better understand errors.
+  - Using `/opt/` - http://www.extradrm.com/?p=2266
+  - Symlink
+    - To create or update a symlink:
+    - `ln -sf /path/to/destination/folder /path/to/origin/folder`
+    - The second parameter is optional (under Ubuntu at least). Not providing it will make the filename of the link identical to the linked file, and create it in the current folder... (for “convenience links” this is quite handy...)
+    - https://stackoverflow.com/questions/1951742/how-to-symlink-a-file-in-linux/1951752#1951752
   
 <table>
 <tbody>
