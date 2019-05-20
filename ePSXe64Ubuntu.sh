@@ -78,7 +78,7 @@ fi
 	  rm -f /tmp/epsxe_x64.xxd
 	  if ! sha256sum -c <(echo "45fb1ee4cb21a5591de64e1a666e4c3cacb30fcc308f0324dc5b2b57767e18ee  "/opt/ePSXe/ePSXe")
 	  then
-	    tput setaf 1; echo "WARNING: patched /home/$USER/ePSXe did not match checksum, using original executable instead"; tput sgr0
+	    tput setaf 1; echo "WARNING: patched /opt/ePSXe/ePSXe did not match checksum, using original executable instead"; tput sgr0
 	    sudo cp -f "/tmp/epsxe_x64" "/opt/ePSXe/epsxe_x64"
 	  fi
 	  rm -f "/tmp/epsxe_x64"
@@ -86,18 +86,17 @@ fi
 	  sudo mv "/tmp/epsxe_x64" "/opt/ePSXe/epsxe_x64"
 	fi
 	sudo chmod +x "/opt/ePSXe/epsxe_x64"
-	
-# Creates symlink
-	cd "/usr/local/bin"
-	sudo ln -s "/opt/ePSXe/epsxe_x64"
-	sudo mv epsxe_x64 "/opt/ePSXe/ePSXe"
-	cd ~
+
+##############################################
+## Creates symlink
+#	cd "/usr/local/bin"
+#	sudo ln -sf "/opt/ePSXe/epsxe_x64"
+#	sudo mv epsxe_x64 "/opt/ePSXe/ePSXe"
+#	cd ~
+##############################################
 
 # Runs ePSXe to create directories
 	"/opt/ePSXe/ePSXe"
-	
-# CHECK RELATION OF NEWLY CREATED DIRECTORIES WITH THOSE OF BACK-UP/DOCS/ AND REST OF CODE
-# $hid now becomes: "/opt/ePSXe/.epsxe"
 
 # Transfers docs folder to .epsxe
 	mv "/tmp/docs" "/opt/ePSXe/.epsxe"
