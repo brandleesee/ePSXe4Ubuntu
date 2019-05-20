@@ -4,7 +4,7 @@
 
 <h2 align="center">changelog</h2>
 
-<h3 align="center">10</h3>
+<h3 align="center">12</h3>
 
 - 12
   - Removed shortcuts for immediate recognition of paths.
