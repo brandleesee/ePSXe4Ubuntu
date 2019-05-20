@@ -85,6 +85,19 @@ fi
 	  sudo mv "/tmp/epsxe_x64" "/opt/epsxe_x64"
 	fi
 	sudo chmod +x "/opt/epsxe_x64"
+	
+# Creates symlink
+	cd "/usr/local/bin"
+	sudo mkdir -p "/opt/ePSXe/
+	sudo ln -s "/opt/epsxe_x64"
+	sudo mv epsxe_x64 "/opt/ePSXe/ePSXe"
+	cd ~
+
+# Runs ePSXe to create directories
+	"/opt/ePSXe/ePSXe"
+	
+# CHECK RELATION OF NEWLY CREATED DIRECTORIES WITH THOSE OF BACK-UP/DOCS/ AND REST OF CODE
+# $hid now becomes: "/opt/ePSXe/.epsxe"
 
 # Transfers docs folder to .epsxe
 	mv "/tmp/docs" "/home/$USER/.epsxe"
