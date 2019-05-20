@@ -87,13 +87,11 @@ fi
 	fi
 	sudo chmod +x "/opt/ePSXe/epsxe_x64"
 
-##############################################
-## Creates symlink
-#	cd "/usr/local/bin"
-#	sudo ln -sf "/opt/ePSXe/epsxe_x64"
-#	sudo mv epsxe_x64 "/opt/ePSXe/ePSXe"
-#	cd ~
-##############################################
+# Creates symlink
+	cd "/usr/local/bin"
+	sudo ln -sf "/opt/ePSXe/epsxe_x64"
+	sudo mv epsxe_x64 "/opt/ePSXe/ePSXe"
+	cd ~
 
 # Runs ePSXe to create directories
 	"/opt/ePSXe/ePSXe"
