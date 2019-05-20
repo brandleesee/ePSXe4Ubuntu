@@ -44,9 +44,10 @@ fi
 	fi
 
 # Downloads Icon
-	wget "https://raw.githubusercontent.com/brandleesee/ePSXe64Ubuntu/master/ePSXe.svg" -P "/home/$USER"
+	wget "https://raw.githubusercontent.com/brandleesee/ePSXe64Ubuntu/master/ePSXe.svg" -P "/tmp"
+	sudo mv "/tmp/ePSXe.svg" "/usr/share/icons/hicolor/scalable/ePSXe.svg"
 
-# Checks and creates icon data for Dash/Dock/Panel
+# Creates shorcut for Dash/Dock/Panel
 	if [ -e "/usr/share/applications/ePSXe.desktop" ]; then
 	  sudo rm -rf "/usr/share/applications/ePSXe.desktop"
 	fi
@@ -61,6 +62,7 @@ fi
 	  echo "Categories=Game;Emulator;"
 	} >> "/tmp/ePSXe.desktop"
 	sudo mv "/tmp/ePSXe.desktop" "/usr/share/applications/ePSXe.desktop"
+	sudo update-desktop-database
 	
 # Sets up ePSXe
 	wget "http://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp"
@@ -76,14 +78,13 @@ fi
 	  if ! sha256sum -c <(echo "45fb1ee4cb21a5591de64e1a666e4c3cacb30fcc308f0324dc5b2b57767e18ee  /home/$USER/ePSXe")
 	  then
 	    tput setaf 1; echo "WARNING: patched /home/$USER/ePSXe did not match checksum, using original executable instead"; tput sgr0
-	    cp -f /tmp/epsxe_x64 "/home/$USER/ePSXe"
+	    sudo cp -f "/tmp/epsxe_x64" "/opt/epsxe_x64"
 	  fi
-	  rm -f /tmp/epsxe_x64
+	  rm -f "/tmp/epsxe_x64"
 	else
-	  mv "/tmp/epsxe_x64" "/home/$USER/ePSXe"
+	  sudo mv "/tmp/epsxe_x64" "/opt/epsxe_x64"
 	fi
-	chmod +x "/home/$USER/ePSXe"
-	"/home/$USER/ePSXe"
+	sudo chmod +x "/opt/epsxe_x64"
 
 # Transfers docs folder to .epsxe
 	mv "/tmp/docs" "/home/$USER/.epsxe"
