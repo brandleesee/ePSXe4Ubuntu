@@ -55,7 +55,7 @@ fi
 	{
 	  echo "Type=Application"
 	  echo "Terminal=false"
-	  echo "Exec=/home/$USER/ePSXe"
+	  echo "Exec=/ops/ePSXe/ePSXe"
 	  echo "Name=ePSXe"
 	  echo "Comment=Created using ePSXe64Ubuntu from https://github.com/brandleesee"
 	  echo "Icon=/usr/share/icons/hicolor/scalable/ePSXe.svg"
