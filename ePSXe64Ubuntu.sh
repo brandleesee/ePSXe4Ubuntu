@@ -35,7 +35,7 @@ fi
 # Back-up function
 	if [ -d "/opt/ePSXe/.epsxe" ]; then
 	  mkdir -p "$bkp"
-	  mv "/opt/ePSXe/.epsxe" "$bkp"
+	  sudo mv "/opt/ePSXe/.epsxe" "$bkp"
 	fi
 
 # Removes duplicate of ePSXe executable
@@ -97,26 +97,26 @@ fi
 	"/opt/ePSXe/ePSXe"
 
 # Transfers docs folder to .epsxe
-	mv "/tmp/docs" "/opt/ePSXe/.epsxe"
+	sudo mv "/tmp/docs" "/opt/ePSXe/.epsxe"
 
 # Activates BIOS HLE 
-	sed -i '11s/.*/BiosPath = /' "/opt/ePSXe/.epsxe/epsxerc"
-	sed -i '14s/.*/BiosHLE = 1/' "/opt/ePSXe/.epsxe/epsxerc"
+	sudo sed -i '11s/.*/BiosPath = /' "/opt/ePSXe/.epsxe/epsxerc"
+	sudo sed -i '14s/.*/BiosHLE = 1/' "/opt/ePSXe/.epsxe/epsxerc"
 
 # Restores Back-Up 
 	if [ -d "$bkp/.epsxe" ]; then
-	  cp -r "$bkp/.epsxe/bios/." "/opt/ePSXe/.epsxe/bios"
-	  cp -r "$bkp/.epsxe/cheats/." "/opt/ePSXe/.epsxe/cheats"
-	  cp -r "$bkp/.epsxe/config/." "/opt/ePSXe/.epsxe/config"
-	  cp -r "$bkp/.epsxe/configs/." "/opt/ePSXe/.epsxe/configs"
-	  cp -r "$bkp/.epsxe/covers/." "/opt/ePSXe/.epsxe/covers"
-	  cp -r "$bkp/.epsxe/docs/." "/opt/ePSXe/.epsxe/docs"
-	  cp -r "$bkp/.epsxe/idx/." "/opt/ePSXe/.epsxe/idx"
-	  cp -r "$bkp/.epsxe/info/." "/opt/ePSXe/.epsxe/info"
-	  cp -r "$bkp/.epsxe/memcards/." "/opt/ePSXe/.epsxe/memcards"
-	  cp -r "$bkp/.epsxe/patches/." "/opt/ePSXe/.epsxe/patches"
-	  cp -r "$bkp/.epsxe/plugins/." "/opt/ePSXe/.epsxe/plugins"
-	  cp -r "$bkp/.epsxe/sstates/." "/opt/ePSXe/.epsxe/sstates"  
+	  sudo cp -r "$bkp/.epsxe/bios/." "/opt/ePSXe/.epsxe/bios"
+	  sudo cp -r "$bkp/.epsxe/cheats/." "/opt/ePSXe/.epsxe/cheats"
+	  sudo cp -r "$bkp/.epsxe/config/." "/opt/ePSXe/.epsxe/config"
+	  sudo cp -r "$bkp/.epsxe/configs/." "/opt/ePSXe/.epsxe/configs"
+	  sudo cp -r "$bkp/.epsxe/covers/." "/opt/ePSXe/.epsxe/covers"
+	  sudo cp -r "$bkp/.epsxe/docs/." "/opt/ePSXe/.epsxe/docs"
+	  sudo cp -r "$bkp/.epsxe/idx/." "/opt/ePSXe/.epsxe/idx"
+	  sudo cp -r "$bkp/.epsxe/info/." "/opt/ePSXe/.epsxe/info"
+	  sudo cp -r "$bkp/.epsxe/memcards/." "/opt/ePSXe/.epsxe/memcards"
+	  sudo cp -r "$bkp/.epsxe/patches/." "/opt/ePSXe/.epsxe/patches"
+	  sudo cp -r "$bkp/.epsxe/plugins/." "/opt/ePSXe/.epsxe/plugins"
+	  sudo cp -r "$bkp/.epsxe/sstates/." "/opt/ePSXe/.epsxe/sstates"  
 	fi
 
 # Function for Shaders
