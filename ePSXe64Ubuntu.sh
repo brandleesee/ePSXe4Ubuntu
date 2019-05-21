@@ -74,7 +74,7 @@ fi
 	  patch /tmp/epsxe_x64.xxd <(echo "6434c
 00019210: 2e73 6f2e 3300 6375 726c 5f65 6173 795f  .so.3.curl_easy_
 .")
-	  xxd -r /tmp/epsxe_x64.xxd "/opt/ePSXe/ePSXe"
+	  sudo xxd -r /tmp/epsxe_x64.xxd "/opt/ePSXe/ePSXe"
 	  rm -f /tmp/epsxe_x64.xxd
 	  if ! sha256sum -c <(echo "45fb1ee4cb21a5591de64e1a666e4c3cacb30fcc308f0324dc5b2b57767e18ee  "/opt/ePSXe/ePSXe")
 	  then
