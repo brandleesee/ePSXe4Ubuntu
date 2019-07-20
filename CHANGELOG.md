@@ -7,6 +7,7 @@
 <h3 align="center">12</h3>
 
 - 12
+  - Added https:// protocol.
   - Removed shortcuts for immediate recognition of paths.
   - Removed quite flags to better understand errors.
   - Using `/opt/` - http://www.extradrm.com/?p=2266
