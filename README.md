@@ -65,7 +65,7 @@ sudo rm /usr/lib/x86_64-linux-gnu/libcurl.so.3
 
 <p align="center"><strong>DELETE</strong>:</p>
 
-<p align="center">ePSXe | ePSXe64Ubuntu.sh | ePSXe_backups | .epsxe | .epsxe.svg</p>
+<p align="center">ePSXe | ePSXe64Ubuntu.sh | ePSXe_backups | .epsxe | epsxe.svg</p>
 
 <p align="center" ><strong>restart</strong> pc</p>
 
