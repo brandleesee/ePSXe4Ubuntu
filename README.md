@@ -87,6 +87,6 @@ FILE "_____ ___ _______.bin" BINARY
     INDEX 01 00:00:00
 ```
 
-* `  .bin  ` and `  .cue  ` must be in the same folder.
-* `  .cue  ` must be named exactly as `  .bin  ` (only difference being the file's extension).
-* The first line within the `  .cue  ` sheet must contain the **exact** name of the `  .bin  ` file inside double quotes including the `  .bin  ` extension.
+* `.bin` and `.cue` must be in the same folder.
+* `.cue` must be named exactly as `.bin` (only difference being the file's extension).
+* First line of `.cue` sheet must contain the **exact** name of the `.bin` file inside double quotes including the `.bin` extension.
