@@ -18,11 +18,23 @@ tput setaf 1; echo "  Add to Favorites/Lock"; tput sgr0
 tput setaf 1; echo "  CLOSE ePSXe GUI to continue with the script."; tput sgr0
 tput setaf 2; echo "Script started."; tput sgr0
 
+sudo apt-get update
+sudo apt-get -y install wget
+
+# Install ubuntu 18.04 version of openssl1.0.0 if it's not known to our version of our distribution
+if ! apt-cache show libssl1.0.0 2>/dev/null|grep -q '^Package: libssl1.0.0$'
+then
+	wget https://mirrors.xmission.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb -O /tmp/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
+	sudo dpkg --force-depends -i /tmp/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
+	sudo apt-get -y install -f
+	rm /tmp/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
+fi
+
 # Installs required packages per OS
 if apt-cache show libcurl4 2>/dev/null|grep '^Package: libcurl4$'
 then
 	sudo apt-get -y install libncurses5 libsdl-ttf2.0-0 libssl1.0.0 ecm unzip
-	wget http://archive.ubuntu.com/ubuntu/pool/main/c/curl3/libcurl3_7.58.0-2ubuntu2_amd64.deb -O /tmp/libcurl3_7.58.0-2ubuntu2_amd64.deb
+	wget https://mirrors.xmission.com/ubuntu/pool/main/c/curl3/libcurl3_7.58.0-2ubuntu2_amd64.deb -O /tmp/libcurl3_7.58.0-2ubuntu2_amd64.deb
 	sudo mkdir /tmp/libcurl3
 	sudo dpkg-deb -x /tmp/libcurl3_7.58.0-2ubuntu2_amd64.deb /tmp/libcurl3
 	sudo cp -vn /tmp/libcurl3/usr/lib/x86_64-linux-gnu/libcurl.so.4.5.0 /usr/lib/x86_64-linux-gnu/libcurl.so.3
@@ -66,7 +78,7 @@ fi
 	
 # Sets up ePSXe
 	sudo mkdir -p "/opt/ePSXe/"
-	wget "http://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp"
+	wget -q "https://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp" || wget -q "http://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp"
 	unzip "/tmp/ePSXe205linux_x64.zip" -d "/tmp"
 	if apt-cache show libcurl4 2>/dev/null|grep '^Package: libcurl4$'
 	then
