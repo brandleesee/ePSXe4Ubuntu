@@ -79,17 +79,14 @@ cd '/location/of/compressed/file'
 ecm-uncompress 'long name of game.bin.ecm'
 ```
 
-<h2 align="center">cue sheets</h2>
-
-* `  .bin  ` and `  .cue  ` must be in the same folder.
-* `  .cue  ` must be named exactly as `  .bin  ` (only difference being the file's extension).
-* The first line within the `  .cue  ` sheet must contain the **exact** name of the `  .bin  ` file inside double quotes including the `  .bin  ` extension.
-* Some games require elaborate `  .cue  ` sheets. A Google search should see you sorted.
-
-<h3 align="center">typical content</h3>
+<h2 align="center">basic cue sheets</h2>
 
 ```
 FILE "_____ ___ _______.bin" BINARY
   TRACK 01 MODE2/2352
     INDEX 01 00:00:00
 ```
+
+* `  .bin  ` and `  .cue  ` must be in the same folder.
+* `  .cue  ` must be named exactly as `  .bin  ` (only difference being the file's extension).
+* The first line within the `  .cue  ` sheet must contain the **exact** name of the `  .bin  ` file inside double quotes including the `  .bin  ` extension.
