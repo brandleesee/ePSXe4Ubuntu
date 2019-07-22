@@ -30,6 +30,15 @@ then
 	rm /tmp/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
 fi
 
+# Checks for ecm package
+if ! apt-cache show ecm 2>/dev/null|grep -q '^Package: ecm$'
+then
+	wget https://mirrors.xmission.com/ubuntu/pool/universe/c/cmdpack/ecm_1.03-1build1_amd64.deb -O /tmp/ecm_1.03-1build1_amd64.deb
+	sudo dpkg --force-depends -i /tmp/ecm_1.03-1build1_amd64.deb
+	sudo apt-get -y install -f
+	rm /tmp/ecm_1.03-1build1_amd64.deb
+fi
+
 # Installs required packages per OS
 if apt-cache show libcurl4 2>/dev/null|grep '^Package: libcurl4$'
 then
