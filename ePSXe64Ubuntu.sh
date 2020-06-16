@@ -15,12 +15,15 @@ tput setaf 2; echo "Welcome to ePSXe64Ubuntu.sh script, version 12."; tput sgr0
 tput setaf 1; echo "When ePSXe window appears on screen:"; tput sgr0
 tput setaf 1; echo "  Right click on icon in Dash/Dock/Panel"; tput sgr0
 tput setaf 1; echo "  Add to Favorites/Lock"; tput sgr0
-tput setaf 1; echo "  CLOSE ePSXe GUI to continue with the script."; tput sgr0
+tput setaf 1; echo "  CLOSE ePSXe window to resume script."; tput sgr0
 tput setaf 2; echo "Script started."; tput sgr0
 
-# Instsalling general tools needed to run script successfully
-sudo apt-get update
-sudo apt-get -y install wget unzip
+# Install general tools
+sudo apt-get -y update
+sudo apt-get -y install wget sed unzip
+
+# Install xxd through vim-common
+sudo apt-get -y install xxd || sudo apt-get -y install vim-common
 
 # Install ubuntu 18.04 version of openssl1.0.0 if it's not known to our version of our distribution
 if ! apt-cache show libssl1.0.0 2>/dev/null|grep -q '^Package: libssl1.0.0$'
@@ -31,7 +34,7 @@ then
 	rm /tmp/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
 fi
 
-# Checks for ecm package
+# Check for ecm package
 if ! apt-cache show ecm 2>/dev/null|grep -q '^Package: ecm$'
 then
 	wget https://mirrors.xmission.com/ubuntu/pool/universe/c/cmdpack/ecm_1.03-1build1_amd64.deb -O /tmp/ecm_1.03-1build1_amd64.deb
@@ -40,7 +43,7 @@ then
 	rm /tmp/ecm_1.03-1build1_amd64.deb
 fi
 
-# Installs required packages per OS
+# Install required packages per OS
 if apt-cache show libcurl4 2>/dev/null|grep '^Package: libcurl4$'
 then
 	sudo apt-get -y install libncurses5 libsdl-ttf2.0-0 libssl1.0.0 ecm
@@ -60,7 +63,7 @@ fi
 	  sudo mv "/opt/ePSXe/.epsxe" "$bkp"
 	fi
 
-# Removes duplicate of ePSXe executable
+# Remove duplicate of ePSXe executable
 	if [ -e "/opt/ePSXe/ePSXe" ]; then
 	  sudo rm -rf "/opt/ePSXe/ePSXe"
 	fi
@@ -69,7 +72,7 @@ fi
 	wget "https://raw.githubusercontent.com/brandleesee/ePSXe64Ubuntu/master/ePSXe.svg" -P "/tmp"
 	sudo mv "/tmp/ePSXe.svg" "/usr/share/icons/hicolor/scalable/ePSXe.svg"
 
-# Creates shorcut for Dash/Dock/Panel
+# Create shorcut for Dash/Dock/Panel
 	if [ -e "/usr/share/applications/ePSXe.desktop" ]; then
 	  sudo rm -rf "/usr/share/applications/ePSXe.desktop"
 	fi
@@ -86,9 +89,9 @@ fi
 	sudo mv "/tmp/ePSXe.desktop" "/usr/share/applications/ePSXe.desktop"
 	sudo update-desktop-database
 	
-# Sets up ePSXe
+# Set up ePSXe
 	sudo mkdir -p "/opt/ePSXe/"
-	wget -q "https://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp" || wget -q "http://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp"
+	wget "https://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp" || wget "http://www.epsxe.com/files/ePSXe205linux_x64.zip" -P "/tmp"
 	unzip "/tmp/ePSXe205linux_x64.zip" -d "/tmp"
 	if apt-cache show libcurl4 2>/dev/null|grep '^Package: libcurl4$'
 	then
@@ -109,23 +112,23 @@ fi
 	fi
 	sudo chmod +x "/opt/ePSXe/epsxe_x64"
 
-# Creates symlink
+# Create symlink
 	cd "/usr/local/bin"
 	sudo ln -sf "/opt/ePSXe/epsxe_x64"
 	sudo mv epsxe_x64 "/opt/ePSXe/ePSXe"
 	cd ~
 
-# Runs ePSXe to create directories
+# Run ePSXe to create directories
 	"/opt/ePSXe/ePSXe"
 
-# Transfers docs folder to .epsxe
+# Transfer docs folder to .epsxe
 	sudo mv "/tmp/docs" "/opt/ePSXe/.epsxe"
 
-# Activates BIOS HLE 
+# Activate BIOS HLE 
 	sudo sed -i '11s/.*/BiosPath = /' "/opt/ePSXe/.epsxe/epsxerc"
 	sudo sed -i '14s/.*/BiosHLE = 1/' "/opt/ePSXe/.epsxe/epsxerc"
 
-# Restores Back-Up 
+# Restore Back-Up 
 	if [ -d "$bkp/.epsxe" ]; then
 	  sudo cp -r "$bkp/.epsxe/bios/." "/opt/ePSXe/.epsxe/bios"
 	  sudo cp -r "$bkp/.epsxe/cheats/." "/opt/ePSXe/.epsxe/cheats"
@@ -160,7 +163,7 @@ tput setaf 2; echo "Shaders Menu"; tput sgr0
 	  esac
 	done
 
-# Removes clutter
+# Remove clutter
 	rm -rf "/tmp/ePSXe205linux_x64.zip"
 	rm -rf "/tmp/shaders.zip"
 	
